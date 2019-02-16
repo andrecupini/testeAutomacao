@@ -1,2 +1,2 @@
 # testeAutomacao
-Avaliação técnica para automação - Analista desenvolvedor Java
+Teste técnico para automação - Analista desenvolvedor Java
