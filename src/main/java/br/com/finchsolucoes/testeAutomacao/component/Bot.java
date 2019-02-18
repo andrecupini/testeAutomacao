@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -48,10 +49,12 @@ public class Bot {
                         String horario = campenonatoObj.getNextElementSibling().getTextContent();
 
                         jogo.setCampeonato(campenonato);
-                        if (data.equals("hoje")) {
-                            data = new SimpleDateFormat("dd-MM-yyyy").format(new Date()).toString();
+                        Date dt = new Date();
+                        if (!data.equals("hoje")) {
+                            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                            dt = sdf.parse(data);
                         }
-                        jogo.setData(data);
+                        jogo.setData(dt);
                         jogo.setHorario(horario);
 
                         System.out.println(campenonato + horario);
@@ -72,6 +75,8 @@ public class Bot {
                 }
             }
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
             e.printStackTrace();
         }
 

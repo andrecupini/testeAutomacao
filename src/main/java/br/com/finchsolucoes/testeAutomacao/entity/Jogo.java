@@ -1,6 +1,7 @@
 package br.com.finchsolucoes.testeAutomacao.entity;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "jogos")
@@ -10,7 +11,8 @@ public class Jogo  {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String campeonato;
-    private String data;
+    @Temporal(TemporalType.DATE)
+    private Date data;
     private String horario;
     private String clube_mandante;
     private String clube_visitante;
@@ -31,11 +33,11 @@ public class Jogo  {
         this.campeonato = campeonato;
     }
 
-    public String getData() {
+    public Date getData() {
         return data;
     }
 
-    public void setData(String data) {
+    public void setData(Date data) {
         this.data = data;
     }
 
